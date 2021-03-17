@@ -13,15 +13,9 @@ foreach($lista as $key => $item) {
 sort($lista);
 $total = count($lista);
 
-//pegar a primeira palavra
-$key = rand(0, count($lista) -1);
-$frase = $lista[$key];
+$frase = '';
 $palavras_aceitas = [];
 $letras_usadas = [];
-
-//echo "começando com {$frase}\r\n";
-$palavras_aceitas[] = $frase;
-$letras_usadas = str_split($frase);
 
 $testes = 0;
 while(mb_strlen($frase, 'utf8') != 10) {
