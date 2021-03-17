@@ -4,7 +4,7 @@ $lista = file('br-utf8.txt');
 foreach($lista as $key => $item) {
     $item = trim($item);
     $l = mb_strlen($item, 'utf8');
-    if($l >= 10) { //removendo palavras muito longas
+    if($l >= 7) { //removendo palavras muito longas
         unset($lista[$key]);
     } else {
         $lista[$key] = $item;
@@ -39,7 +39,9 @@ while(mb_strlen($frase, 'utf8') != 10) {
     
     $letras = str_split($tmp);
     foreach($letras as $l) {//se já repetiu uma das letras, não aceitar
+//        echo "testar {$l} em ".implode('', $letras_usadas)."\r\n";
         if(in_array($l, $letras_usadas)) {
+//            echo "\tachou\r\n";
             $aceitar = false;
         }
     }
@@ -48,6 +50,7 @@ while(mb_strlen($frase, 'utf8') != 10) {
 //        echo "aceitou {$tmp}.\r\n";
         $frase .= $tmp;
         $palavras_aceitas[] = $tmp;
+        $letras_usadas += $letras;
     }
     
     $testes++;
